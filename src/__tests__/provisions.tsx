@@ -10,7 +10,10 @@ declare module "../index" {
 }
 
 describe("context", () => {
-	function* Provider(this: Context): Generator<Element> {
+	type Props = {
+		message: string;
+	};
+	function* Provider(this: Context<Props>): Generator<Element> {
 		let i = 1;
 		for (const {children, message = "Hello "} of this) {
 			this.set("greeting", message + i++);
